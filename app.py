@@ -30,9 +30,6 @@ if name and meaning_of_30 and baking_request:
         if baking_request not in st.session_state.baking_votes:
             st.session_state.baking_votes[baking_request] = 0  # Initialize votes
         st.success(f"Thanks, {name}! Your RSVP is recorded.")
-        # Clear inputs after submission
-        st.experimental_set_query_params()
-        st.experimental_rerun()
 
 # Display Guest List
 st.header("Who's Coming? 🧁")
@@ -50,7 +47,6 @@ if st.session_state.baking_votes:
         col1.write(f"**{request}**")
         if col2.button(f"Vote ({votes})", key=request):
             st.session_state.baking_votes[request] += 1
-            st.experimental_rerun()
 else:
     st.write("No baking requests yet. Add yours above!")
 
